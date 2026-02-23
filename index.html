@@ -1,0 +1,283 @@
+<!-- Every HTML page starts with this -->
+<!DOCTYPE html>
+<html lang="en">  <!-- lang="en" is good for SEO -->
+<head>
+    <!-- In head: settings, CSS, title -->
+    <meta charset="UTF-8">  <!-- Supports Persian/English characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsive design -->
+    <title>My Website</title>
+    <link rel="stylesheet" href="./styles/style.css">  <!-- Link to CSS -->
+</head>
+<body>
+    <!-- In body: everything user sees -->
+    <h1>Welcome to My Website</h1>
+    <p>This is a paragraph</p>
+
+    <!-- ==================== HEADINGS ==================== -->
+<!-- Headings create a document outline for both users and search engines -->
+<!-- h1 is the most important - use ONLY ONE per page for SEO -->
+<h1>Most Important Heading (use once per page for SEO)</h1>
+
+<!-- h2-h6 create hierarchy - like book chapters and subchapters -->
+<!-- Proper heading structure helps screen readers navigate -->
+<h2>Section Heading</h2>
+<h3>Sub-section Heading</h3>
+<!-- h4, h5 also available -->
+<h6>Smallest Heading (rarely used, but available)</h6>
+
+<!-- ==================== TEXT ELEMENTS ==================== -->
+<!-- p = paragraph - for blocks of text. Adds automatic margins -->
+<p>This is a paragraph of text. It can be long or short. Paragraphs create visual separation and improve readability.</p>
+
+<!-- span = inline container - no semantic meaning, just for styling -->
+<!-- Doesn't create line breaks - stays within the same line -->
+<span>Inline text without line break</span>
+<span>This will appear right after the previous span</span>
+
+<!-- ==================== LINKS ==================== -->
+<!-- a = anchor tag - creates hyperlinks. href defines destination -->
+<!-- External link - opens same tab by default -->
+<a href="https://google.com">Go to Google (external link)</a>
+
+<!-- Internal link - relative path to file in your project -->
+<a href="./about.html">About Page (internal link)</a>
+
+<!-- Same-page link - scrolls to element with id="contact" -->
+<!-- Useful for single-page navigation and "back to top" buttons -->
+<a href="#contact">Jump to Contact Section (same page link)</a>
+
+<!-- Add target="_blank" to open in new tab (security risk without rel="noopener") -->
+<a href="https://google.com" target="_blank" rel="noopener noreferrer">Open in new tab (secure version)</a>
+
+<!-- ==================== IMAGES ==================== -->
+<!-- img - self-closing tag. src = source, alt = alternative text -->
+<!-- alt is REQUIRED for accessibility and SEO - describes image for screen readers -->
+<!-- alt also displays when image fails to load -->
+<img src="images/profile.jpg" alt="Profile photo of smiling person wearing glasses">
+
+<!-- Always specify width/height to prevent layout shifts (CLS optimization) -->
+<img src="images/logo.png" alt="Company logo" width="200" height="100">
+
+<!-- ==================== LISTS ==================== -->
+<!-- ul = unordered list - bullet points. Use when order doesn't matter -->
+<ul>
+    <li>First item</li>  <!-- li = list item -->
+    <li>Second item</li>
+    <li>Third item</li>
+</ul>
+
+<!-- ol = ordered list - numbered. Use when sequence matters (recipes, steps) -->
+<ol>
+    <li>First step</li>
+    <li>Second step</li>
+    <li>Third step</li>
+</ol>
+
+<!-- dl = description list - terms and definitions -->
+<dl>
+    <dt>HTML</dt>  <!-- term -->
+    <dd>HyperText Markup Language - structures web content</dd>  <!-- definition -->
+    
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets - styles web content</dd>
+</dl>
+
+<!-- ==================== BUTTONS ==================== -->
+<!-- button - clickable element. Default type="submit" INSIDE forms -->
+<button>Click Me</button>  <!-- Default button style -->
+
+<!-- type="submit" - submits parent form. Triggers form submission -->
+<button type="submit">Submit Form</button>
+
+<!-- type="button" - regular button with no default behavior. Use for JavaScript -->
+<button type="button" class="primary-btn">Primary Action</button>
+
+<!-- Disabled button - cannot be clicked, grayed out -->
+<button disabled>Disabled Button</button>
+
+<!-- ==================== INPUT ELEMENTS ==================== -->
+<!-- input - versatile form control. type determines behavior -->
+<!-- text - single line text input -->
+<input type="text" placeholder="Enter your name">  <!-- placeholder shows hint text -->
+
+<!-- number - only accepts numbers, has spinner controls -->
+<input type="number" placeholder="Age" min="0" max="120">  <!-- min/max validation -->
+
+<!-- email - requires @ symbol, brings up email keyboard on mobile -->
+<input type="email" placeholder="Email address" required>
+
+<!-- password - masks input with dots, prevents shoulder surfing -->
+<input type="password" placeholder="Password">
+
+<!-- checkbox - boolean choice (yes/no, agree/disagree) -->
+<!-- id matches label's for attribute - clicking label toggles checkbox -->
+<input type="checkbox" id="terms"> 
+<label for="terms">I agree to terms and conditions</label>  <!-- Clickable label -->
+
+<!-- radio - mutually exclusive choices (only one per name group) -->
+<!-- Same name="gender" means only one can be selected -->
+<input type="radio" name="gender" value="male" id="male">
+<label for="male">Male</label>
+
+<input type="radio" name="gender" value="female" id="female">
+<label for="female">Female</label>
+
+<!-- textarea - multi-line text input. rows controls visible height -->
+<textarea placeholder="Write a message..." rows="5"></textarea>
+
+<!-- select - dropdown menu. Saves space by hiding options until clicked -->
+<select>
+    <option value="">Select country</option>  <!-- Default empty option -->
+    <option value="us">USA</option>           <!-- value sent to server -->
+    <option value="ca">Canada</option>
+    <option value="uk">United Kingdom</option>
+</select>
+
+<!-- ==================== FORMS ==================== -->
+<!-- form - container for form elements. action = where to send data -->
+<!-- method = how to send (GET = URL, POST = body, more secure) -->
+<form action="/submit" method="POST">
+    <!-- label - associates text with input. Improves accessibility -->
+    <!-- for attribute must match input's id -->
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="user_name" required>  <!-- required = must fill -->
+    
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="user_email" required>
+    
+    <!-- Fieldset groups related inputs (like radio groups) -->
+    <fieldset>
+        <legend>Preferred Contact Method:</legend>  <!-- caption for fieldset -->
+        
+        <input type="radio" id="contact-email" name="contact" value="email">
+        <label for="contact-email">Email</label>
+        
+        <input type="radio" id="contact-phone" name="contact" value="phone">
+        <label for="contact-phone">Phone</label>
+    </fieldset>
+    
+    <!-- Submit button - triggers form validation and submission -->
+    <button type="submit">Register</button>
+    
+    <!-- Reset button - clears all form fields (rarely used) -->
+    <button type="reset">Clear Form</button>
+</form>
+
+<!-- ==================== CONTAINERS ==================== -->
+<!-- div - division, generic block container. No semantic meaning -->
+<!-- Used purely for styling and layout grouping -->
+<div class="container">
+    <h2>Section Title</h2>
+    <p>Section content goes here. The div itself doesn't mean anything - it's just a hook for CSS.</p>
+</div>
+
+<!-- span - generic inline container. Same as div but for inline content -->
+<p>This is text with a <span class="highlight">highlighted part</span> using span.</p>
+
+<!-- ==================== SEMANTIC HTML ==================== -->
+<!-- Semantic tags describe their meaning to browsers and developers -->
+<!-- Better for SEO, accessibility, and code readability -->
+
+<!-- header - introductory content, typically contains logo and navigation -->
+<header>
+    <!-- nav - navigation links section -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>  <!-- "/" = root of site -->
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- main - dominant content of the page. Use ONLY ONE per page -->
+<main>
+    <!-- article - self-contained content that could be reused independently -->
+    <!-- Examples: blog posts, news stories, product cards -->
+    <article>
+        <header>  <!-- Article can have its own header -->
+            <h2>Blog Post Title</h2>
+            <p>Published on <time datetime="2024-01-15">January 15, 2024</time></p>
+        </header>
+        
+        <p>Blog content goes here. This article makes sense on its own.</p>
+        
+        <footer>  <!-- Article can have its own footer -->
+            <p>Written by Author Name</p>
+        </footer>
+    </article>
+    
+    <!-- section - thematic grouping of content, usually with a heading -->
+    <!-- Like chapters in a book - related content together -->
+    <section id="features">
+        <h2>Our Features</h2>  <!-- Sections should have headings -->
+        <div class="feature-grid">
+            <!-- Feature cards would go here -->
+            <div class="feature">Feature 1</div>
+            <div class="feature">Feature 2</div>
+        </div>
+    </section>
+    
+    <!-- aside - content tangentially related to the main content -->
+    <!-- Sidebars, pull quotes, related links -->
+    <aside>
+        <h3>Related Articles</h3>
+        <ul>
+            <li><a href="#">Article 1</a></li>
+            <li><a href="#">Article 2</a></li>
+        </ul>
+    </aside>
+</main>
+
+<!-- footer - footer for its nearest ancestor section or page -->
+<footer>
+    <!-- Common footer content: copyright, contact, sitemap -->
+    <p>&copy; 2024 My Website. All rights reserved.</p>  <!-- &copy; = © symbol -->
+    
+    <nav>  <!-- Footer navigation is common -->
+        <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<!-- ==================== ADDITIONAL SEMANTIC TAGS ==================== -->
+<!-- figure and figcaption - for images with captions -->
+<figure>
+    <img src="chart.jpg" alt="Sales chart showing growth">
+    <figcaption>Figure 1: Quarterly sales growth 2023-2024</figcaption>
+</figure>
+
+<!-- details and summary - expandable/collapsible content -->
+<details>
+    <summary>Click to see more details</summary>  <!-- Always visible -->
+    <p>This content is hidden until clicked. Great for FAQs.</p>
+</details>
+
+<!-- mark - highlighted text (like yellow highlighter) -->
+<p>This is <mark>important text</mark> that stands out.</p>
+
+<!-- time - machine-readable date/time -->
+<p>The event starts at <time datetime="2024-02-15T19:00">7:00 PM on February 15</time>.</p>
+
+<!-- ==================== META TIPS ==================== -->
+<!-- 
+    WHY SEMANTIC HTML MATTERS:
+    1. SEO: Search engines understand your content better
+    2. Accessibility: Screen readers navigate properly
+    3. Maintainability: Code is self-documenting
+    4. Future-proof: Works with new browsers and devices
+    
+    BEST PRACTICES:
+    - Use ONE h1 per page
+    - Don't skip heading levels (h1 then h2 then h3)
+    - Always use alt on images
+    - Use labels with form inputs
+    - Choose semantic tags over div when possible
+    - Validate your HTML with W3C validator
+-->
+
+    <script src="./scripts/script.js"></script>  <!-- Link to JavaScript (best at end of body) -->
+</body>
+</html>
