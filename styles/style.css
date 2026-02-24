@@ -251,3 +251,75 @@ a[href$=".pdf"] {
     position: relative;
     z-index: 1;
 }
+
+
+/* Parent (container) */
+.flex-container {
+    display: flex;           /* Enable flexbox */
+    
+    /* Direction */
+    flex-direction: row;            /* Default: left to right */
+    flex-direction: row-reverse;    /* right to left */
+    flex-direction: column;         /* top to bottom */
+    flex-direction: column-reverse; /* bottom to top */
+    
+    /* Main axis alignment (horizontal for row) */
+    justify-content: flex-start;    /* Default: pack at start */
+    justify-content: flex-end;      /* pack at end */
+    justify-content: center;        /* center */
+    justify-content: space-between; /* first at start, last at end, equal space between */
+    justify-content: space-around;  /* equal space around each */
+    justify-content: space-evenly;  /* perfectly equal space */
+    
+    /* Cross axis alignment (vertical for row) */
+    align-items: stretch;           /* Default: fill container height */
+    align-items: flex-start;        /* align to top */
+    align-items: flex-end;          /* align to bottom */
+    align-items: center;            /* center vertically */
+    align-items: baseline;          /* align by text baseline */
+    
+    /* Multi-line alignment (when flex-wrap is on) */
+    align-content: flex-start;      /* pack lines at top */
+    align-content: center;          /* center lines vertically */
+    align-content: space-between;   /* distribute lines */
+    
+    /* Wrapping */
+    flex-wrap: nowrap;              /* Default: force all in one line */
+    flex-wrap: wrap;                /* wrap to next line */
+    flex-wrap: wrap-reverse;
+    
+    /* Gap between items (modern, better than margins) */
+    gap: 20px;                      /* Space between all items */
+    gap: 10px 20px;                 /* row-gap column-gap */
+    row-gap: 16px;
+    column-gap: 24px;
+}
+
+/* Children (items) */
+.flex-item {
+    /* Growth: how much to grow compared to others */
+    flex-grow: 1;           /* Take up available space */
+    flex-grow: 0;           /* Default - don't grow */
+    
+    /* Shrink: how much to shrink when space is tight */
+    flex-shrink: 1;         /* Default - can shrink */
+    flex-shrink: 0;         /* Don't shrink */
+    
+    /* Basis: initial size before growing/shrinking */
+    flex-basis: auto;       /* Default - based on content */
+    flex-basis: 200px;      /* Start at 200px */
+    
+    /* Shorthand: flex: grow shrink basis */
+    flex: 1;                /* flex: 1 1 0 */
+    flex: 0 1 auto;         /* Default */
+    flex: 1 0 200px;        /* Can grow, can't shrink, start at 200px */
+    
+    /* Override alignment for this item */
+    align-self: center;     /* Override container's align-items */
+    align-self: stretch;
+    
+    /* Order */
+    order: 0;               /* Default */
+    order: 1;               /* Higher number = later position */
+    order: -1;              /* Negative numbers come first */
+}
