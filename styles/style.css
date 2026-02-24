@@ -118,6 +118,55 @@ a[href$=".pdf"] {
 
 
 
+/* Box Model - Every element is a box: */
+
+.box {
+    /* Content dimensions */
+    width: 200px;           /* Width of content */
+    height: 100px;          /* Height of content */
+    max-width: 100%;        /* Responsive: never exceed parent */
+    min-height: 50px;       /* At least this tall */
+    
+    
+    /* Padding - space INSIDE the box, around content */
+    padding: 20px;           /* All sides */
+    padding: 10px 20px;      /* top/bottom 10, left/right 20 */
+    padding: 10px 20px 30px; /* top, left/right, bottom */
+    padding: 10px 20px 30px 40px; /* top, right, bottom, left */
+    padding-top: 10px;
+    padding-right: 20px;
+    
+    /* Border - edge of the box */
+    border: 2px solid black;         /* width style color */
+    border: 2px dashed red;
+    border: 5px dotted blue;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #333;
+    border-radius: 10px;             /* Rounded corners */
+    border-radius: 50%;               /* Perfect circle (with equal width/height) */
+    border-top-left-radius: 10px;
+    
+    /* Margin - space OUTSIDE the box, between elements */
+    margin: 30px;            /* All sides */
+    margin: 20px auto;       /* 20px top/bottom, auto left/right (centers block) */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    /* Background */
+    background-color: lightblue;
+    background-image: url('image.jpg');
+    background-size: cover;  /* Cover entire area */
+    background-size: contain; /* Show entire image */
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Box shadow (x-offset, y-offset, blur, spread, color) */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Common card shadow */
+}
+
+
 
 
 
