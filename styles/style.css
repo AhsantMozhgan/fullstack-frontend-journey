@@ -205,5 +205,49 @@ a[href$=".pdf"] {
 }
 
 
+.static-element {
+    position: static;       /* Default - follows normal flow */
+    /* top/left/right/bottom have no effect */
+}
 
+.relative-element {
+    position: relative;     /* Relative to its normal position */
+    top: 10px;              /* Move 10px down from where it would be */
+    left: 20px;             /* Move 20px right */
+    /* Original space is still reserved */
+}
 
+.absolute-element {
+    position: absolute;     /* Relative to nearest positioned ancestor */
+    top: 0;
+    right: 0;
+    /* Removed from normal flow - other elements ignore it */
+    /* Need parent with position:relative to control reference point */
+}
+
+.fixed-element {
+    position: fixed;        /* Relative to viewport (browser window) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Stays in place when scrolling */
+    /* Common for headers, back-to-top buttons */
+}
+
+.sticky-element {
+    position: sticky;       /* Hybrid - normal until scroll threshold */
+    top: 0;
+    /* Behaves like relative until it hits top, then like fixed */
+    /* Great for section headers in long lists */
+}
+
+/* Z-index controls stacking order (which element is on top) */
+.high-z-index {
+    position: relative;     /* z-index only works on positioned elements */
+    z-index: 10;            /* Higher number = closer to user (on top) */
+}
+
+.low-z-index {
+    position: relative;
+    z-index: 1;
+}
