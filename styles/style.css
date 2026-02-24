@@ -75,7 +75,7 @@ h2 + p {
 
 /* Attribute selector */
 input[type="text"] { 
-    border: 10px solid gray; 
+    border: 1px solid gray; 
 }
 a[href^="https"] { 
     color: lightblue; 
@@ -83,3 +83,42 @@ a[href^="https"] {
 a[href$=".pdf"] { 
     color: red; 
 }  /* Links ending with .pdf */
+
+
+#features {
+    /* Color names (limited) */
+    color: red;
+    color: blue;
+    color: lightblue;
+
+
+/* RGB - Red Green Blue (0-255) */
+    color: rgb(255, 0, 0);     /* Pure red */
+    color: rgb(0, 255, 0);     /* Pure green */
+    color: rgb(0, 0, 255);     /* Pure blue */
+    color: rgb(100, 150, 200); /* Custom color */
+
+
+    /* RGBA - with transparency (alpha 0-1) */
+    color: rgba(255, 0, 0, 0.5);  /* Semi-transparent red */
+
+    /* HEX - Hexadecimal (most common) */
+    color: #ff0000;  /* Red */
+    color: #00ff00;  /* Green */
+    color: #0000ff;  /* Blue */
+    color: #333;     /* Dark gray (shorthand for #333333) */
+
+    /* HSL - Hue Saturation Lightness */
+    color: hsl(0, 100%, 50%);     /* Red */
+    color: hsl(240, 100%, 50%);   /* Blue */
+    color: hsl(120, 100%, 50%);   /* Green */
+    
+
+}
+
+
+
+
+
+
+
