@@ -167,6 +167,42 @@ a[href$=".pdf"] {
 }
 
 
+/* Display Property */
+.block-element {
+    display: block;         /* Takes full width, starts new line */
+    /* Default for: div, p, h1-h6, section, header, footer */
+}
+
+.inline-element {
+    display: inline;        /* Only as wide as content, no width/height */
+    /* Default for: span, a, strong, em */
+    /* width and height DON'T work */
+    /* margin/padding only horizontal */
+}
+
+.inline-block-element {
+    display: inline-block;  /* Best of both worlds */
+    /* Can have width/height, but sits inline */
+    width: 150px;
+    height: 80px;
+    margin: 10px;
+}
+
+.hidden-element {
+    display: none;          /* Completely hidden, takes no space */
+}
+
+.invisible-element {
+    visibility: hidden;     /* Hidden but still takes space */
+}
+
+.flex-container {
+    display: flex;          /* Modern 1D layout */
+}
+
+.grid-container {
+    display: grid;          /* Modern 2D layout */
+}
 
 
 
