@@ -1,6 +1,6 @@
-body {
+/* body {
     color: red;
-}
+} */
 
 /* How to Connect CSS:
 
@@ -16,3 +16,19 @@ body {
 
 <!-- Method 3: Inline (AVOID - hard to maintain) -->
 <p style="color: red;">Text</p> */
+
+
+/* Selector { property: value; }
+selector {
+    property: value;
+    property: value;
+} */
+
+/* Example */
+body {
+    color: blue;           /* Text color */
+    font-size: 16px;       /* Font size */
+    background-color: yellow; /* Background */
+    font-weight: bold;      /* Bold text */
+    text-align: left;     /* Left side text */
+}
