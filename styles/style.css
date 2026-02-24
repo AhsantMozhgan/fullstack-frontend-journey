@@ -32,3 +32,54 @@ body {
     font-weight: bold;      /* Bold text */
     text-align: left;     /* Left side text */
 }
+
+
+/* Selectors */
+
+/* Element/tag selector */
+p { color: red; }
+div { background: blue; }
+h1 { font-size: 24px; }
+
+/* Class selector (reusable) */
+.my-class { 
+    font-size: 20px; 
+    color: green;
+}
+
+/* ID selector (unique - use only once) */
+#my-id { 
+    border: 2px solid black; 
+    padding: 10px;
+}
+
+/* Multiple selectors */
+p, .my-class, #my-id { 
+    color: purple; 
+}
+
+/* Descendant (any level inside) */
+div p { 
+    color: orange; 
+}  /* All p tags inside any div */
+
+/* Direct child (only immediate children) */
+div > p { 
+    color: brown; 
+}  /* Only p tags that are direct children of div */
+
+/* Adjacent sibling (immediately after) */
+h2 + p { 
+    font-style: italic; 
+}  /* p that comes right after h2 */
+
+/* Attribute selector */
+input[type="text"] { 
+    border: 10px solid gray; 
+}
+a[href^="https"] { 
+    color: lightblue; 
+}  /* Links starting with https */
+a[href$=".pdf"] { 
+    color: red; 
+}  /* Links ending with .pdf */
