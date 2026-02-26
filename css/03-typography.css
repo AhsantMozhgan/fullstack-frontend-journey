@@ -1,0 +1,189 @@
+/* ========================================
+   MODULE 3: TYPOGRAPHY
+   ======================================== */
+
+/* ==================== TYPOGRAPHY ==================== */
+
+/* Font Family */
+.font-family {
+    /* System fonts - fastest loading */
+    font-family: Arial, Helvetica, sans-serif;
+    
+    /* Web-safe fonts - available on most systems */
+    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
+    
+    /* Modern stack - uses best available system font */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* Google Fonts (external) */
+    font-family: 'Roboto', sans-serif;  /* Must link in HTML first */
+}
+
+/* Font Size - different units explained */
+.font-size {
+    /* Absolute units (not recommended for responsive) */
+    font-size: 16px;  /* Pixels - fixed size */
+    font-size: 12pt;  /* Points - print style */
+    
+    /* Relative units (RECOMMENDED) */
+    font-size: 1rem;  /* Relative to root (16px default) */
+    font-size: 1.2em; /* Relative to parent element */
+    font-size: 100%;  /* Percentage of parent */
+    
+    /* Viewport units (responsive) */
+    font-size: 5vw;   /* 5% of viewport width - scales with screen */
+    
+    /* WHY: rem is best for accessibility - respects user's browser settings */
+}
+
+/* Font Weight */
+.font-weight {
+    font-weight: normal;     /* 400 */
+    font-weight: bold;       /* 700 */
+    font-weight: lighter;    /* Lighter than parent */
+    font-weight: bolder;     /* Bolder than parent */
+    
+    /* Numeric values 100-900 */
+    font-weight: 100;  /* Thin */
+    font-weight: 300;  /* Light */
+    font-weight: 400;  /* Regular/Normal */
+    font-weight: 500;  /* Medium */
+    font-weight: 700;  /* Bold */
+    font-weight: 900;  /* Black */
+}
+
+/* Text Decoration */
+.text-decoration {
+    text-decoration: underline;           /* Underlined text */
+    text-decoration: overline;            /* Line above */
+    text-decoration: line-through;        /* Strikethrough */
+    text-decoration: none;                /* Remove underline from links */
+    
+    /* Combined with style and color */
+    text-decoration: underline wavy red;  /* Wavy red underline */
+    text-decoration: underline dotted blue;
+}
+
+/* Text Transform */
+.text-transform {
+    text-transform: uppercase;     /* ALL CAPS */
+    text-transform: lowercase;     /* all lowercase */
+    text-transform: capitalize;    /* First Letter Of Each Word */
+    text-transform: none;          /* Default */
+}
+
+/* Text Alignment */
+.text-align {
+    text-align: left;      /* Default for LTR languages */
+    text-align: right;     /* For RTL languages like Arabic */
+    text-align: center;    /* Centered text */
+    text-align: justify;   /* Spreads text to both edges (like newspapers) */
+}
+
+/* Line Height - vertical spacing */
+.line-height {
+    line-height: 1.5;      /* 1.5 = 150% of font size - RECOMMENDED for readability */
+    line-height: 24px;     /* Fixed height */
+    line-height: 150%;     /* Percentage */
+    line-height: normal;   /* Browser default (usually 1.2) */
+}
+
+/* Letter and Word Spacing */
+.spacing {
+    letter-spacing: 1px;    /* Space between letters */
+    letter-spacing: -0.5px; /* Tighten letters */
+    
+    word-spacing: 4px;      /* Space between words */
+    word-spacing: -1px;     /* Tighter words */
+}
+
+/* Text Shadow */
+.text-shadow {
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    
+    /* Multiple shadows */
+    text-shadow: 2px 2px 0 #ff0000, 4px 4px 0 #00ff00;
+    
+    /* Inset effect */
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #333;
+}
+
+/* Font Style */
+.font-style {
+    font-style: normal;      /* Default */
+    font-style: italic;      /* Italic text */
+    font-style: oblique;     /* Oblique (similar to italic) */
+}
+
+/* Font Variant */
+.font-variant {
+    font-variant: normal;        /* Default */
+    font-variant: small-caps;    /* Small caps text */
+}
+
+/* White Space */
+.white-space {
+    white-space: normal;      /* Default - wraps text */
+    white-space: nowrap;      /* No wrapping */
+    white-space: pre;         /* Respects whitespace in HTML */
+    white-space: pre-wrap;    /* Respects whitespace and wraps */
+    white-space: pre-line;    /* Respects line breaks, collapses spaces */
+}
+
+/* Text Overflow */
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;      /* Just cuts off */
+    text-overflow: ellipsis;  /* Shows ... */
+}
+
+/* Word Break */
+.word-break {
+    word-break: normal;       /* Default */
+    word-break: break-all;    /* Break at any character */
+    word-break: keep-all;     /* Don't break words */
+    word-wrap: break-word;    /* Break long words */
+}
+
+/* Column Count (multi-column text) */
+.multi-column {
+    column-count: 3;          /* Split into 3 columns */
+    column-gap: 40px;         /* Gap between columns */
+    column-rule: 2px solid #ccc;  /* Line between columns */
+}
+
+/* Practical typography examples */
+.article-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.article-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.4;
+}
+
+.article-body {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #444;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 20px;
+    margin: 20px 0;
+}

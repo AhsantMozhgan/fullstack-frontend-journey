@@ -1,0 +1,288 @@
+/* ========================================
+   MODULE 6: FLEXBOX - COMPLETE GUIDE
+   ======================================== */
+
+/* 
+   Flexbox is for 1D layouts (either row OR column)
+   Perfect for: navigation bars, card grids, centering, equal height columns
+*/
+
+/* FLEX CONTAINER (PARENT) */
+.flex-container {
+    display: flex;           /* Enable flexbox */
+    
+    /* ----- DIRECTION (main axis) ----- */
+    flex-direction: row;            /* Default: left to right */
+    flex-direction: row-reverse;    /* right to left */
+    flex-direction: column;         /* top to bottom */
+    flex-direction: column-reverse; /* bottom to top */
+    /* Main axis = direction of flex-direction */
+    /* Cross axis = perpendicular to main axis */
+    
+    /* ----- WRAPPING ----- */
+    flex-wrap: nowrap;        /* Default: force all in one line */
+    flex-wrap: wrap;          /* wrap to next line */
+    flex-wrap: wrap-reverse;  /* wrap to previous line */
+    /* Shorthand: flex-flow = flex-direction + flex-wrap */
+    flex-flow: row wrap;      /* direction | wrap */
+    
+    /* ----- MAIN AXIS ALIGNMENT (justify-content) ----- */
+    /* Controls spacing along main axis */
+    justify-content: flex-start;    /* Default: pack at start */
+    justify-content: flex-end;      /* pack at end */
+    justify-content: center;        /* center */
+    justify-content: space-between; /* first at start, last at end, equal space between */
+    justify-content: space-around;  /* equal space around each (half on edges) */
+    justify-content: space-evenly;  /* perfectly equal space (including edges) */
+    
+    /* ----- CROSS AXIS ALIGNMENT (align-items) ----- */
+    /* Controls alignment of ALL items along cross axis */
+    align-items: stretch;     /* Default: fill container height */
+    align-items: flex-start;  /* align to start of cross axis (top for row) */
+    align-items: flex-end;    /* align to end of cross axis (bottom for row) */
+    align-items: center;      /* center along cross axis */
+    align-items: baseline;    /* align by text baseline */
+    
+    /* ----- MULTI-LINE ALIGNMENT (align-content) ----- */
+    /* Only works when flex-wrap: wrap and multiple lines exist */
+    align-content: flex-start;     /* pack lines at start */
+    align-content: flex-end;       /* pack lines at end */
+    align-content: center;         /* center lines */
+    align-content: space-between;  /* distribute lines */
+    align-content: space-around;   /* distribute with space around */
+    align-content: stretch;        /* stretch to fill */
+    
+    /* ----- GAP (modern spacing) ----- */
+    gap: 20px;              /* Space between ALL items (both row and column) */
+    row-gap: 16px;          /* Space between rows only */
+    column-gap: 24px;       /* Space between columns only */
+    /* WHY: Better than margins - doesn't add extra space at edges */
+}
+
+/* FLEX ITEMS (CHILDREN) */
+.flex-item {
+    /* ----- ORDERING ----- */
+    order: 0;               /* Default: source order */
+    order: 1;               /* Higher number = later position */
+    order: -1;              /* Negative numbers come first */
+    /* WHY: Reorder visually without changing HTML */
+    
+    /* ----- GROWTH (flex-grow) ----- */
+    flex-grow: 0;           /* Default: don't grow */
+    flex-grow: 1;           /* Take up available space proportionally */
+    /* If all items have flex-grow: 1, they share space equally */
+    /* If one has flex-grow: 2, it gets twice the space */
+    
+    /* ----- SHRINK (flex-shrink) ----- */
+    flex-shrink: 1;         /* Default: can shrink if needed */
+    flex-shrink: 0;         /* Don't shrink - maintain width */
+    
+    /* ----- BASIS (flex-basis) ----- */
+    flex-basis: auto;       /* Default: based on content width */
+    flex-basis: 200px;      /* Start at 200px before growing/shrinking */
+    flex-basis: 30%;        /* Percentage of container */
+    
+    /* ----- FLEX SHORTHAND ----- */
+    flex: 1;                 /* flex: 1 1 0 (grow, shrink, basis) */
+    flex: 0 1 auto;          /* Default */
+    flex: 1 0 200px;         /* Can grow, can't shrink, start at 200px */
+    flex: 0 0 auto;          /* Fixed size based on content */
+    flex: 0 0 200px;         /* Fixed width 200px (no grow, no shrink) */
+    
+    /* ----- INDIVIDUAL ALIGNMENT (align-self) ----- */
+    align-self: auto;        /* Default: inherit from container */
+    align-self: flex-start;  /* Override container's align-items */
+    align-self: flex-end;
+    align-self: center;
+    align-self: stretch;
+    align-self: baseline;
+    
+    /* ----- MARGIN AUTO (powerful spacing) ----- */
+    margin-right: auto;      /* Push all items after this to the right */
+    margin-left: auto;       /* Push all items before this to the left */
+    margin: auto;            /* Center both horizontally AND vertically */
+}
+
+/* ==================== FLEXBOX PRACTICAL EXAMPLES ==================== */
+
+/* 1. Perfect centering (both axes) */
+.center-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Full viewport height */
+    background: #f5f5f5;
+}
+
+/* 2. Navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;  /* Logo left, menu right */
+    align-items: center;              /* Vertically center */
+    padding: 16px 32px;
+    background: #333;
+    color: white;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;  /* Modern spacing between links */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #4a90e2;
+}
+
+/* 3. Card grid */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px;
+}
+
+.card {
+    flex: 1 1 300px;  /* Grow, shrink, basis - responsive cards */
+    /* Cards will be at least 300px, wrap when needed */
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 4. Holy Grail layout (header, footer, 3 columns) */
+.holy-grail {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.holy-grail-header,
+.holy-grail-footer {
+    flex: 0 0 auto;  /* Fixed size */
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.holy-grail-body {
+    display: flex;
+    flex: 1 0 auto;  /* Take remaining space */
+}
+
+.holy-grail-nav {
+    flex: 0 0 200px;  /* Fixed width sidebar */
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.holy-grail-content {
+    flex: 1;  /* Take remaining space */
+    padding: 20px;
+}
+
+.holy-grail-ads {
+    flex: 0 0 150px;  /* Fixed width sidebar */
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+/* 5. Sticky footer (footer always at bottom) */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;  /* Pushes footer down */
+}
+
+/* 6. Equal height columns */
+.equal-height {
+    display: flex;
+    gap: 20px;
+}
+
+.equal-height > * {
+    flex: 1;  /* All columns equal width */
+    background: #4a90e2;
+    color: white;
+    padding: 20px;
+}
+
+/* 7. Media object (image + text) */
+.media-object {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.media-image {
+    flex: 0 0 100px;  /* Fixed width */
+}
+
+.media-content {
+    flex: 1;  /* Take remaining space */
+}
+
+/* 8. Form layout */
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-field {
+    flex: 1;  /* Equal width fields */
+}
+
+/* 9. Pricing cards */
+.pricing-grid {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pricing-card {
+    flex: 1;
+    max-width: 300px;
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pricing-card.featured {
+    transform: scale(1.05);
+    border: 2px solid #4a90e2;
+}
+
+/* 10. Flexbox debugging */
+.flex-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.flex-demo > * {
+    background: #4a90e2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

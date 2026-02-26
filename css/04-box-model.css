@@ -1,0 +1,227 @@
+/* ========================================
+   MODULE 4: BOX MODEL
+   ======================================== */
+
+/* 
+   Every element is a box with:
+   ┌─────────────────────────────────┐
+   │           MARGIN (outside)      │
+   │  ┌───────────────────────────┐  │
+   │  │        BORDER             │  │
+   │  │  ┌─────────────────────┐  │  │
+   │  │  │      PADDING        │  │  │
+   │  │  │  ┌───────────────┐  │  │  │
+   │  │  │  │   CONTENT     │  │  │  │
+   │  │  │  └───────────────┘  │  │  │
+   │  │  └─────────────────────┘  │  │
+   │  └───────────────────────────┘  │
+   └─────────────────────────────────┘
+*/
+
+.box-model-example {
+    /* CONTENT - the actual content (text, images) */
+    width: 300px;        /* Width of content area */
+    height: 200px;       /* Height of content area */
+    min-width: 100px;    /* Won't get smaller than this */
+    max-width: 100%;     /* Won't exceed parent width */
+    min-height: 50px;
+    max-height: 500px;
+    
+    /* PADDING - space INSIDE the box, between content and border */
+    padding: 20px;                    /* All four sides */
+    padding: 10px 20px;               /* top/bottom | left/right */
+    padding: 10px 20px 30px;          /* top | left/right | bottom */
+    padding: 10px 20px 30px 40px;     /* top | right | bottom | left (clockwise) */
+    
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    
+    /* BORDER - edge of the box */
+    border: 2px solid black;           /* width | style | color */
+    border: 2px dashed red;
+    border: 5px dotted blue;
+    
+    /* Individual border sides */
+    border-top: 2px solid #333;
+    border-right: 3px dashed #666;
+    border-bottom: 4px dotted #999;
+    border-left: 5px double #ccc;
+    
+    /* Border styles */
+    border-style: solid;    /* ───── */
+    border-style: dashed;   /* - - - */
+    border-style: dotted;   /* ····· */
+    border-style: double;   /* ──── */
+    border-style: groove;   /* 3D grooved effect */
+    border-style: ridge;    /* 3D ridged effect */
+    border-style: inset;    /* 3D inset */
+    border-style: outset;   /* 3D outset */
+    border-style: none;     /* No border */
+    border-style: hidden;   /* No border (for tables) */
+    
+    /* Border width */
+    border-width: 2px;
+    border-width: thin;     /* Usually 1px */
+    border-width: medium;   /* Usually 3px */
+    border-width: thick;    /* Usually 5px */
+    
+    /* Border color */
+    border-color: #ff0000;
+    border-color: transparent;  /* Invisible border (useful for hover effects) */
+    
+    /* Border radius - rounded corners */
+    border-radius: 10px;                    /* All corners */
+    border-radius: 10px 20px;                /* top-left/bottom-right | top-right/bottom-left */
+    border-radius: 10px 20px 30px 40px;      /* top-left | top-right | bottom-right | bottom-left */
+    border-radius: 50%;                       /* Circle (with equal width/height) */
+    
+    border-top-left-radius: 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 40px;
+    
+    /* MARGIN - space OUTSIDE the box, between elements */
+    margin: 30px;                      /* All sides */
+    margin: 20px auto;                 /* 20px top/bottom, auto left/right (centers block) */
+    margin: 10px 20px 30px;            /* top | left/right | bottom */
+    margin: 10px 20px 30px 40px;       /* top | right | bottom | left */
+    
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    
+    /* Auto margins - powerful centering technique */
+    margin-left: auto;     /* Pushes element right */
+    margin-right: auto;    /* Pushes element left */
+    /* Both auto = center horizontally (for block elements with width) */
+}
+
+/* Box sizing demonstration */
+.box-sizing-demo {
+    /* content-box (DEFAULT) - width excludes padding/border */
+    box-sizing: content-box;
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+    /* Total width = 200 + 40 + 10 = 250px */
+    
+    /* border-box (RECOMMENDED) - width includes padding/border */
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+    /* Total width = 200px (content shrinks to 200-40-10 = 150px) */
+    /* WHY: Much easier to create predictable layouts */
+}
+
+/* Box Model Visual Examples */
+.content-box-example {
+    box-sizing: content-box;
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    border: 5px solid #4a90e2;
+    margin: 20px;
+    background: #f0f7ff;
+}
+
+.border-box-example {
+    box-sizing: border-box;
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    border: 5px solid #e74c3c;
+    margin: 20px;
+    background: #fff0f0;
+}
+
+/* Margin collapsing demonstration */
+.margin-collapse-parent {
+    background: #f5f5f5;
+    padding: 1px;  /* Prevents margin collapse with parent */
+}
+
+.margin-collapse-top {
+    margin-bottom: 30px;
+    background: #4a90e2;
+    color: white;
+    padding: 10px;
+}
+
+.margin-collapse-bottom {
+    margin-top: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 10px;
+    /* These margins collapse to 30px (the larger) */
+}
+
+/* Negative margins */
+.negative-margin {
+    margin-top: -20px;  /* Pulls element up */
+    margin-left: -20px; /* Pulls element left */
+    background: #f39c12;
+    color: white;
+    padding: 10px;
+}
+
+/* Outline (similar to border but doesn't affect box model) */
+.outline-example {
+    outline: 3px solid #4a90e2;
+    outline-offset: 5px;  /* Space between border and outline */
+    border: 2px solid #333;
+    padding: 20px;
+    margin: 30px;
+    /* Outline doesn't take up space! */
+}
+
+/* Box Shadow (visual depth) */
+.box-shadow-examples {
+    /* offset-x | offset-y | blur | spread | color */
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);  /* Basic */
+    
+    box-shadow: 0 0 0 3px #4a90e2;  /* "Border" effect (no blur) */
+    
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2),  /* Multiple shadows */
+                0 0 0 2px #e74c3c inset;  /* Inner shadow */
+    
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);  /* Inner shadow */
+}
+
+/* Width and Height examples */
+.size-examples {
+    /* Fixed sizes */
+    width: 200px;
+    height: 150px;
+    
+    /* Percentage */
+    width: 50%;
+    height: 30%;
+    
+    /* Viewport units */
+    width: 50vw;   /* 50% of viewport width */
+    height: 25vh;  /* 25% of viewport height */
+    
+    /* Content-based */
+    width: auto;           /* Default - based on content */
+    width: max-content;    /* Width needed for content */
+    width: min-content;    /* Minimum width without breaking */
+    width: fit-content;    /* Fit to content, but not exceed container */
+}
+
+/* Overflow handling */
+.overflow-example {
+    width: 200px;
+    height: 100px;
+    overflow: visible;    /* Default - content overflows */
+    overflow: hidden;     /* Hide overflow */
+    overflow: scroll;     /* Always show scrollbars */
+    overflow: auto;       /* Show scrollbars only when needed */
+    
+    /* Separate axes */
+    overflow-x: hidden;
+    overflow-y: auto;
+}

@@ -1,0 +1,53 @@
+/* ========================================
+   MAIN CSS FILE - CSS LEARNING MODULE
+   ======================================== */
+
+/* This file imports all other CSS files in order
+   Think of it as a table of contents for your styles */
+
+/* CSS Reset & Base Styles */
+@import url('01-basics.css');
+
+/* Color Systems */
+/* @import url('02-colors.css'); */
+
+/* Typography */
+@import url('03-typography.css');
+
+/* Box Model */
+@import url('04-box-model.css');
+
+/* Display & Positioning */
+@import url('05-display-position.css');
+
+/* Flexbox */
+@import url('06-flexbox.css');
+
+/* CSS Grid */
+@import url('07-grid.css');
+
+/* Common Patterns */
+@import url('08-patterns.css');
+
+/* Animations */
+@import url('09-animations.css');
+
+/* Responsive Design */
+@import url('10-responsive.css');
+
+/* ========================================
+   TROUBLESHOOTING TIPS
+   ======================================== */
+
+/* If styles aren't showing:
+   1. Check file paths - are all CSS files in the 'css' folder?
+   2. Check browser console for 404 errors
+   3. Make sure @import statements are at the top of the file
+   4. Clear browser cache
+*/
+
+/* Debug helper - uncomment to see element boundaries */
+
+/* * {
+    outline: 1px solid red !important;
+}  */

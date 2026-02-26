@@ -1,290 +1,651 @@
-<!-- Every HTML page starts with this -->
 <!DOCTYPE html>
-<html lang="en">  <!-- lang="en" is good for SEO -->
+<html lang="en">
 <head>
-    <!-- In head: settings, CSS, title -->
-    <meta charset="UTF-8">  <!-- Supports Persian/English characters -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsive design -->
-    <title>My Website</title>
-    <link rel="stylesheet" href="./styles/style.css">  <!-- Link to CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Concepts Demonstration</title>
+    <link rel="stylesheet" href="css/main.css"> <!-- Link to your CSS file -->
+    
+    <!-- Google Fonts example (uncomment if using) -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> -->
+    
+    <style>
+        /* Quick demo styles to show structure */
+        .section {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 10px;
+        }
+        .demo-box {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-    <div class="box">
-        This is the CONTENT area
-    </div>
-    
-    <!-- In body: everything user sees -->
-    <h1>Welcome to My Website</h1>
-    <p>This is a paragraph</p>
-
-    <!-- ==================== HEADINGS ==================== -->
-<!-- Headings create a document outline for both users and search engines -->
-<!-- h1 is the most important - use ONLY ONE per page for SEO -->
-<h1>Most Important Heading (use once per page for SEO)</h1>
-
-<!-- h2-h6 create hierarchy - like book chapters and subchapters -->
-<!-- Proper heading structure helps screen readers navigate -->
-<h2>Section Heading</h2>
-<h3>Sub-section Heading</h3>
-<!-- h4, h5 also available -->
-<h6>Smallest Heading (rarely used, but available)</h6>
-
-<!-- ==================== TEXT ELEMENTS ==================== -->
-<!-- p = paragraph - for blocks of text. Adds automatic margins -->
-<p>This is a paragraph of text. It can be long or short. Paragraphs create visual separation and improve readability.</p>
-
-<!-- span = inline container - no semantic meaning, just for styling -->
-<!-- Doesn't create line breaks - stays within the same line -->
-<span>Inline text without line break</span>
-<span>This will appear right after the previous span</span>
-
-<!-- ==================== LINKS ==================== -->
-<!-- a = anchor tag - creates hyperlinks. href defines destination -->
-<!-- External link - opens same tab by default -->
-<a href="https://google.com">Go to Google (external link)</a>
-
-<!-- Internal link - relative path to file in your project -->
-<a href="./about.html">About Page (internal link)</a>
-
-<!-- Same-page link - scrolls to element with id="contact" -->
-<!-- Useful for single-page navigation and "back to top" buttons -->
-<a href="#contact">Jump to Contact Section (same page link)</a>
-
-<!-- Add target="_blank" to open in new tab (security risk without rel="noopener") -->
-<a href="https://google.com" target="_blank" rel="noopener noreferrer">Open in new tab (secure version)</a>
-
-<!-- ==================== IMAGES ==================== -->
-<!-- img - self-closing tag. src = source, alt = alternative text -->
-<!-- alt is REQUIRED for accessibility and SEO - describes image for screen readers -->
-<!-- alt also displays when image fails to load -->
-<img src="./images/profile.jpg" alt="Profile photo of smiling person">
-
-<!-- Always specify width/height to prevent layout shifts (CLS optimization) -->
-<img src="images/logo.png" alt="Company logo" width="200" height="100">
-
-<!-- ==================== LISTS ==================== -->
-<!-- ul = unordered list - bullet points. Use when order doesn't matter -->
-<ul>
-    <li>First item</li>  <!-- li = list item -->
-    <li>Second item</li>
-    <li>Third item</li>
-</ul>
-
-<!-- ol = ordered list - numbered. Use when sequence matters (recipes, steps) -->
-<ol>
-    <li>First step</li>
-    <li>Second step</li>
-    <li>Third step</li>
-</ol>
-
-<!-- dl = description list - terms and definitions -->
-<dl>
-    <dt>HTML</dt>  <!-- term -->
-    <dd>HyperText Markup Language - structures web content</dd>  <!-- definition -->
-    
-    <dt>CSS</dt>
-    <dd>Cascading Style Sheets - styles web content</dd>
-</dl>
-
-<!-- ==================== BUTTONS ==================== -->
-<!-- button - clickable element. Default type="submit" INSIDE forms -->
-<button>Click Me</button>  <!-- Default button style -->
-
-<!-- type="submit" - submits parent form. Triggers form submission -->
-<button type="submit">Submit Form</button>
-
-<!-- type="button" - regular button with no default behavior. Use for JavaScript -->
-<button type="button" class="primary-btn">Primary Action</button>
-
-<!-- Disabled button - cannot be clicked, grayed out -->
-<button disabled>Disabled Button</button>
-
-<!-- ==================== INPUT ELEMENTS ==================== -->
-<!-- input - versatile form control. type determines behavior -->
-<!-- text - single line text input -->
-<input type="text" placeholder="Enter your name">  <!-- placeholder shows hint text -->
-
-<!-- number - only accepts numbers, has spinner controls -->
-<input type="number" placeholder="Age" min="0" max="120">  <!-- min/max validation -->
-
-<!-- email - requires @ symbol, brings up email keyboard on mobile -->
-<input type="email" placeholder="Email address" required>
-
-<!-- password - masks input with dots, prevents shoulder surfing -->
-<input type="password" placeholder="Password">
-
-<!-- checkbox - boolean choice (yes/no, agree/disagree) -->
-<!-- id matches label's for attribute - clicking label toggles checkbox -->
-<input type="checkbox" id="terms"> 
-<label for="terms">I agree to terms and conditions</label>  <!-- Clickable label -->
-
-<!-- radio - mutually exclusive choices (only one per name group) -->
-<!-- Same name="gender" means only one can be selected -->
-<input type="radio" name="gender" value="male" id="male">
-<label for="male">Male</label>
-
-<input type="radio" name="gender" value="female" id="female">
-<label for="female">Female</label>
-
-<!-- textarea - multi-line text input. rows controls visible height -->
-<textarea placeholder="Write a message..." rows="5"></textarea>
-
-<!-- select - dropdown menu. Saves space by hiding options until clicked -->
-<select>
-    <option value="">Select country</option>  <!-- Default empty option -->
-    <option value="us">USA</option>           <!-- value sent to server -->
-    <option value="ca">Canada</option>
-    <option value="uk">United Kingdom</option>
-</select>
-
-<!-- ==================== FORMS ==================== -->
-<!-- form - container for form elements. action = where to send data -->
-<!-- method = how to send (GET = URL, POST = body, more secure) -->
-<form action="/submit" method="POST">
-    <!-- label - associates text with input. Improves accessibility -->
-    <!-- for attribute must match input's id -->
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" name="user_name" required>  <!-- required = must fill -->
-    
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="user_email" required>
-    
-    <!-- Fieldset groups related inputs (like radio groups) -->
-    <fieldset>
-        <legend>Preferred Contact Method:</legend>  <!-- caption for fieldset -->
-        
-        <input type="radio" id="contact-email" name="contact" value="email">
-        <label for="contact-email">Email</label>
-        
-        <input type="radio" id="contact-phone" name="contact" value="phone">
-        <label for="contact-phone">Phone</label>
-    </fieldset>
-    
-    <!-- Submit button - triggers form validation and submission -->
-    <button type="submit">Register</button>
-    
-    <!-- Reset button - clears all form fields (rarely used) -->
-    <button type="reset">Clear Form</button>
-</form>
-
-<!-- ==================== CONTAINERS ==================== -->
-<!-- div - division, generic block container. No semantic meaning -->
-<!-- Used purely for styling and layout grouping -->
-<div class="container">
-    <h2>Section Title</h2>
-    <p>Section content goes here. The div itself doesn't mean anything - it's just a hook for CSS.</p>
-</div>
-
-<!-- span - generic inline container. Same as div but for inline content -->
-<p>This is text with a <span class="highlight">highlighted part</span> using span.</p>
-
-<!-- ==================== SEMANTIC HTML ==================== -->
-<!-- Semantic tags describe their meaning to browsers and developers -->
-<!-- Better for SEO, accessibility, and code readability -->
-
-<!-- header - introductory content, typically contains logo and navigation -->
-<header>
-    <!-- nav - navigation links section -->
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>  <!-- "/" = root of site -->
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- main - dominant content of the page. Use ONLY ONE per page -->
-<main>
-    <!-- article - self-contained content that could be reused independently -->
-    <!-- Examples: blog posts, news stories, product cards -->
-    <article>
-        <header>  <!-- Article can have its own header -->
-            <h2>Blog Post Title</h2>
-            <p>Published on <time datetime="2026-02-15">February 15, 2026</time></p>
-        </header>
-        
-        <p>Blog content goes here. This article makes sense on its own.</p>
-        
-        <footer>  <!-- Article can have its own footer -->
-            <p>Written by Author Name</p>
-        </footer>
-    </article>
-    
-    <!-- section - thematic grouping of content, usually with a heading -->
-    <!-- Like chapters in a book - related content together -->
-    <section id="features">
-        <h2>Our Features</h2>  <!-- Sections should have headings -->
-        <div class="feature-grid">
-            <!-- Feature cards would go here -->
-            <div class="feature">Feature 1</div>
-            <div class="feature">Feature 2</div>
+    <!-- ==================== CSS BASICS ==================== -->
+    <section class="section">
+        <h2>CSS Basics - How CSS Works</h2>
+        <div class="demo-box">
+            <p>This demonstrates CSS specificity. The styles in your CSS file control this page.</p>
+            <p style="color: red;">This text uses an <strong>inline style</strong> (highest priority after !important)</p>
+            <p id="special-paragraph" class="highlight">This paragraph has both ID and class - ID wins!</p>
         </div>
     </section>
-    
-    <!-- aside - content tangentially related to the main content -->
-    <!-- Sidebars, pull quotes, related links -->
-    <aside>
-        <h3>Related Articles</h3>
-        <ul>
-            <li><a href="#">Article 1</a></li>
-            <li><a href="#">Article 2</a></li>
-        </ul>
-    </aside>
-</main>
 
-<!-- footer - footer for its nearest ancestor section or page -->
-<footer>
-    <!-- Common footer content: copyright, contact, sitemap -->
-    <p>&copy; 2026 My Website. All rights reserved.</p>  <!-- &copy; = © symbol -->
-    
-    <nav>  <!-- Footer navigation is common -->
-        <ul>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms of Service</a></li>
-        </ul>
-    </nav>
-</footer>
+    <!-- ==================== COLOR SYSTEMS ==================== -->
+    <section class="section">
+        <h2>Color Systems</h2>
+        
+        <!-- Named Colors -->
+        <div class="demo-box named-color">
+            <h3>Named Colors</h3>
+            <p style="color: red;">Red text (named color)</p>
+            <p style="color: blue;">Blue text (named color)</p>
+            <p style="color: lightblue;">Light blue text (named color)</p>
+        </div>
 
+        <!-- HEX Colors -->
+        <div class="demo-box hex-colors">
+            <h3>HEX Colors</h3>
+            <p style="color: #ff0000;">#ff0000 - Pure red</p>
+            <p style="color: #00ff00;">#00ff00 - Pure green</p>
+            <p style="color: #0000ff;">#0000ff - Pure blue</p>
+            <p style="color: #333;">#333 - Dark gray</p>
+            <p style="color: #fff; background: #333;">#fff - White</p>
+        </div>
 
+        <!-- RGB/RGBA Colors -->
+        <div class="demo-box rgb-colors">
+            <h3>RGB Colors</h3>
+            <p style="color: rgb(255, 0, 0);">rgb(255,0,0) - Red</p>
+            <p style="color: rgb(0, 255, 0);">rgb(0,255,0) - Green</p>
+            <p style="color: rgb(0, 0, 255);">rgb(0,0,255) - Blue</p>
+        </div>
 
+        <div class="demo-box rgba-colors" style="background: rgba(0,0,0,0.1);">
+            <h3>RGBA Colors (with transparency)</h3>
+            <p style="color: rgba(255, 0, 0, 0.5);">Semi-transparent red</p>
+            <p style="color: rgba(0, 0, 255, 0.3);">Very transparent blue</p>
+            <div style="background: rgba(74, 144, 226, 0.2); padding: 10px;">
+                Box with semi-transparent background
+            </div>
+        </div>
 
-<!-- ==================== ADDITIONAL SEMANTIC TAGS ==================== -->
-<!-- figure and figcaption - for images with captions -->
-<figure>
-    <img src="chart.jpg" alt="Sales chart showing growth">
-    <figcaption>Figure 1: Quarterly sales growth 2025-2026</figcaption>
-</figure>
+        <!-- HSL Colors -->
+        <div class="demo-box hsl-colors">
+            <h3>HSL Colors</h3>
+            <p style="color: hsl(0, 100%, 50%);">hsl(0,100%,50%) - Red</p>
+            <p style="color: hsl(120, 100%, 50%);">hsl(120,100%,50%) - Green</p>
+            <p style="color: hsl(240, 100%, 50%);">hsl(240,100%,50%) - Blue</p>
+            <p style="color: hsl(200, 80%, 60%);">hsl(200,80%,60%) - Sky blue</p>
+        </div>
 
-<!-- details and summary - expandable/collapsible content -->
-<details>
-    <summary>Click to see more details</summary>  <!-- Always visible -->
-    <p>This content is hidden until clicked. Great for FAQs.</p>
-</details>
+        <!-- CSS Variables -->
+        <div class="demo-box" style="color: var(--primary-color); background: var(--secondary-color);">
+            <h3>CSS Variables (from :root)</h3>
+            <p style="color: var(--primary-color);">Primary color variable</p>
+            <p style="color: var(--success-color);">Success color variable</p>
+            <p style="color: var(--warning-color);">Warning color variable</p>
+            <p style="color: var(--danger-color);">Danger color variable</p>
+        </div>
+    </section>
 
-<!-- mark - highlighted text (like yellow highlighter) -->
-<p>This is <mark>important text</mark> that stands out.</p>
+    <!-- ==================== TYPOGRAPHY ==================== -->
+    <section class="section">
+        <h2>Typography</h2>
 
-<!-- time - machine-readable date/time -->
-<p>The event starts at <time datetime="2026-02-15T16:00">4:00 PM on February 23</time>.</p>
+        <!-- Font Families -->
+        <div class="demo-box font-family">
+            <h3>Font Families</h3>
+            <p style="font-family: Arial, Helvetica, sans-serif;">Arial (sans-serif)</p>
+            <p style="font-family: 'Times New Roman', Times, serif;">Times New Roman (serif)</p>
+            <p style="font-family: 'Courier New', Courier, monospace;">Courier New (monospace)</p>
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                System font stack
+            </p>
+        </div>
 
-<!-- ==================== META TIPS ==================== -->
-<!-- 
-    WHY SEMANTIC HTML MATTERS:
-    1. SEO: Search engines understand your content better
-    2. Accessibility: Screen readers navigate properly
-    3. Maintainability: Code is self-documenting
-    4. Future-proof: Works with new browsers and devices
-    
-    BEST PRACTICES:
-    - Use ONE h1 per page
-    - Don't skip heading levels (h1 then h2 then h3)
-    - Always use alt on images
-    - Use labels with form inputs
-    - Choose semantic tags over div when possible
-    - Validate your HTML with W3C validator
--->
+        <!-- Font Sizes -->
+        <div class="demo-box font-size">
+            <h3>Font Sizes</h3>
+            <p style="font-size: 16px;">16px - Fixed size</p>
+            <p style="font-size: 1rem;">1rem - Relative to root (default 16px)</p>
+            <p style="font-size: 1.5em;">1.5em - Relative to parent</p>
+            <p style="font-size: 150%;">150% - Percentage of parent</p>
+            <p style="font-size: 5vw;">5vw - Responsive (5% of viewport width)</p>
+        </div>
 
-    <script src="./scripts/script.js"></script>  <!-- Link to JavaScript (best at end of body) -->
+        <!-- Font Weights -->
+        <div class="demo-box font-weight">
+            <h3>Font Weights</h3>
+            <p style="font-weight: 100;">Weight 100 - Thin</p>
+            <p style="font-weight: 300;">Weight 300 - Light</p>
+            <p style="font-weight: 400;">Weight 400 - Regular</p>
+            <p style="font-weight: 700;">Weight 700 - Bold</p>
+            <p style="font-weight: 900;">Weight 900 - Black</p>
+        </div>
+
+        <!-- Text Decoration -->
+        <div class="demo-box text-decoration">
+            <h3>Text Decoration</h3>
+            <p style="text-decoration: underline;">Underlined text</p>
+            <p style="text-decoration: overline;">Overline text</p>
+            <p style="text-decoration: line-through;">Strikethrough text</p>
+            <p><a href="#" style="text-decoration: none;">Link with no underline</a></p>
+            <p style="text-decoration: underline wavy red;">Wavy red underline</p>
+        </div>
+
+        <!-- Text Transform -->
+        <div class="demo-box text-transform">
+            <h3>Text Transform</h3>
+            <p style="text-transform: uppercase;">uppercase text</p>
+            <p style="text-transform: lowercase;">LOWERCASE TEXT</p>
+            <p style="text-transform: capitalize;">capitalize each word</p>
+        </div>
+
+        <!-- Text Alignment -->
+        <div class="demo-box text-align">
+            <h3>Text Alignment</h3>
+            <p style="text-align: left;">Left aligned text (default)</p>
+            <p style="text-align: center;">Center aligned text</p>
+            <p style="text-align: right;">Right aligned text</p>
+            <p style="text-align: justify; width: 300px;">
+                Justified text spreads evenly between margins, like in newspapers and magazines.
+                This creates a clean look but can cause awkward spacing.
+            </p>
+        </div>
+
+        <!-- Line Height -->
+        <div class="demo-box line-height">
+            <h3>Line Height</h3>
+            <p style="line-height: 1.2;">Line height 1.2 - Tight<br>Second line here</p>
+            <p style="line-height: 1.6;">Line height 1.6 - Recommended for readability<br>Second line here with more space</p>
+            <p style="line-height: 2;">Line height 2.0 - Loose spacing<br>Second line here with lots of space</p>
+        </div>
+
+        <!-- Letter and Word Spacing -->
+        <div class="demo-box spacing">
+            <h3>Letter & Word Spacing</h3>
+            <p style="letter-spacing: 2px;">Letter spacing: 2px</p>
+            <p style="letter-spacing: -1px;">Letter spacing: -1px (tighter)</p>
+            <p style="word-spacing: 10px;">Word spacing: 10px between words</p>
+        </div>
+
+        <!-- Text Shadow -->
+        <div class="demo-box text-shadow">
+            <h3>Text Shadow</h3>
+            <p style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-size: 24px;">
+                Basic shadow
+            </p>
+            <p style="text-shadow: 2px 2px 0 #ff0000, 4px 4px 0 #00ff00; font-size: 24px;">
+                Multiple shadows
+            </p>
+            <p style="text-shadow: 1px 1px 0 #fff, -1px -1px 0 #333; font-size: 24px; color: #666;">
+                Inset/emboss effect
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== BOX MODEL ==================== -->
+    <section class="section">
+        <h2>Box Model</h2>
+
+        <div class="demo-box">
+            <h3>Box Model Demonstration</h3>
+            <div style="background: #4a90e2; color: white; width: 200px; padding: 20px; border: 5px solid #333; margin: 30px;">
+                Content with padding, border, margin
+            </div>
+            
+            <h4>Box Sizing Comparison:</h4>
+            <div style="background: #ff9999; width: 200px; padding: 20px; border: 5px solid #333; margin: 10px 0; box-sizing: content-box;">
+                content-box: width 200px + padding 40px + border 10px = 250px total
+            </div>
+            <div style="background: #99ff99; width: 200px; padding: 20px; border: 5px solid #333; margin: 10px 0; box-sizing: border-box;">
+                border-box: width 200px includes padding and border (content shrinks to 150px)
+            </div>
+        </div>
+
+        <!-- Border Radius Examples -->
+        <div class="demo-box">
+            <h3>Border Radius</h3>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="width: 100px; height: 100px; background: #4a90e2; border-radius: 10px;"></div>
+                <div style="width: 100px; height: 100px; background: #4a90e2; border-radius: 20px;"></div>
+                <div style="width: 100px; height: 100px; background: #4a90e2; border-radius: 50%;"></div>
+                <div style="width: 100px; height: 100px; background: #4a90e2; border-radius: 10px 30px;"></div>
+                <div style="width: 100px; height: 100px; background: #4a90e2; border-radius: 10px 20px 30px 40px;"></div>
+            </div>
+        </div>
+
+        <!-- Border Styles -->
+        <div class="demo-box">
+            <h3>Border Styles</h3>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="width: 100px; height: 100px; border: 5px solid black;"></div>
+                <div style="width: 100px; height: 100px; border: 5px dashed black;"></div>
+                <div style="width: 100px; height: 100px; border: 5px dotted black;"></div>
+                <div style="width: 100px; height: 100px; border: 5px double black;"></div>
+                <div style="width: 100px; height: 100px; border: 5px groove #ccc;"></div>
+                <div style="width: 100px; height: 100px; border: 5px ridge #ccc;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DISPLAY PROPERTY ==================== -->
+    <section class="section">
+        <h2>Display Property</h2>
+
+        <div class="demo-box">
+            <h3>Block vs Inline vs Inline-Block</h3>
+            
+            <div style="background: #e3f2fd; padding: 10px; margin: 10px 0;">
+                <strong>Block elements (divs):</strong> take full width, start new line
+                <div style="background: #4a90e2; height: 30px; margin: 5px 0;">Block 1</div>
+                <div style="background: #4a90e2; height: 30px; margin: 5px 0;">Block 2</div>
+            </div>
+
+            <div style="background: #e3f2fd; padding: 10px; margin: 10px 0;">
+                <strong>Inline elements (spans):</strong> flow like text
+                <span style="background: #4a90e2; color: white; padding: 5px;">Inline 1</span>
+                <span style="background: #4a90e2; color: white; padding: 5px;">Inline 2</span>
+                <span style="background: #4a90e2; color: white; padding: 5px;">Inline 3</span>
+                <p><small>Note: width/height ignored, only horizontal padding/margin work</small></p>
+            </div>
+
+            <div style="background: #e3f2fd; padding: 10px; margin: 10px 0;">
+                <strong>Inline-block elements:</strong> best of both worlds
+                <div style="display: inline-block; background: #4a90e2; color: white; width: 80px; height: 50px; margin: 5px;">Box 1</div>
+                <div style="display: inline-block; background: #4a90e2; color: white; width: 80px; height: 50px; margin: 5px;">Box 2</div>
+                <div style="display: inline-block; background: #4a90e2; color: white; width: 80px; height: 50px; margin: 5px;">Box 3</div>
+                <p><small>Flows inline but can have width/height and vertical margins</small></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== POSITIONING ==================== -->
+    <section class="section">
+        <h2>Positioning</h2>
+
+        <div class="demo-box" style="position: relative; height: 200px;">
+            <h3>Position Examples</h3>
+            
+            <div style="background: #4a90e2; color: white; padding: 5px; width: 120px; position: static;">
+                Static (default)
+            </div>
+            
+            <div style="background: #e74c3c; color: white; padding: 5px; width: 120px; position: relative; top: 10px; left: 20px;">
+                Relative (moved down 10px, right 20px)
+            </div>
+            
+            <div style="background: #2ecc71; color: white; padding: 5px; width: 120px; position: absolute; top: 80px; right: 20px;">
+                Absolute (positioned relative to section)
+            </div>
+            
+            <div style="background: #f39c12; color: white; padding: 5px; width: 120px; position: fixed; bottom: 20px; right: 20px; z-index: 100;">
+                Fixed (stays in viewport)
+            </div>
+            
+            <p><small>Note: The fixed element stays at bottom-right when scrolling</small></p>
+        </div>
+
+        <div class="demo-box">
+            <h3>Z-Index Example</h3>
+            <div style="position: relative; height: 150px;">
+                <div style="position: absolute; width: 100px; height: 100px; background: rgba(74, 144, 226, 0.8); top: 0; left: 0; z-index: 1; color: white; padding: 5px;">
+                    z-index: 1
+                </div>
+                <div style="position: absolute; width: 100px; height: 100px; background: rgba(231, 76, 60, 0.8); top: 30px; left: 30px; z-index: 2; color: white; padding: 5px;">
+                    z-index: 2
+                </div>
+                <div style="position: absolute; width: 100px; height: 100px; background: rgba(46, 204, 113, 0.8); top: 60px; left: 60px; z-index: 3; color: white; padding: 5px;">
+                    z-index: 3
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FLEXBOX ==================== -->
+    <section class="section">
+        <h2>Flexbox</h2>
+
+        <!-- justify-content examples -->
+        <div class="demo-box">
+            <h3>justify-content (main axis alignment)</h3>
+            
+            <p>flex-start:</p>
+            <div style="display: flex; justify-content: flex-start; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 50px; margin: 5px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px; margin: 5px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px; margin: 5px;">3</div>
+            </div>
+
+            <p>center:</p>
+            <div style="display: flex; justify-content: center; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 50px; margin: 5px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px; margin: 5px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px; margin: 5px;">3</div>
+            </div>
+
+            <p>space-between:</p>
+            <div style="display: flex; justify-content: space-between; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 50px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px;">3</div>
+            </div>
+
+            <p>space-around:</p>
+            <div style="display: flex; justify-content: space-around; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 50px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 50px;">3</div>
+            </div>
+        </div>
+
+        <!-- align-items examples -->
+        <div class="demo-box">
+            <h3>align-items (cross axis alignment)</h3>
+            
+            <p>flex-start:</p>
+            <div style="display: flex; align-items: flex-start; background: #eee; height: 100px; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 30px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 60px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 90px;">3</div>
+            </div>
+
+            <p>center:</p>
+            <div style="display: flex; align-items: center; background: #eee; height: 100px; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 30px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 60px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 90px;">3</div>
+            </div>
+
+            <p>flex-end:</p>
+            <div style="display: flex; align-items: flex-end; background: #eee; height: 100px; padding: 10px;">
+                <div style="background: #4a90e2; width: 50px; height: 30px;">1</div>
+                <div style="background: #4a90e2; width: 50px; height: 60px;">2</div>
+                <div style="background: #4a90e2; width: 50px; height: 90px;">3</div>
+            </div>
+        </div>
+
+        <!-- flex-grow example -->
+        <div class="demo-box">
+            <h3>flex-grow</h3>
+            <div style="display: flex; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; height: 50px; flex-grow: 1;">grow: 1</div>
+                <div style="background: #e74c3c; height: 50px; flex-grow: 2;">grow: 2</div>
+                <div style="background: #2ecc71; height: 50px; flex-grow: 1;">grow: 1</div>
+            </div>
+            <p><small>Second item gets twice the extra space</small></p>
+        </div>
+
+        <!-- Perfect centering -->
+        <div class="demo-box">
+            <h3>Perfect Centering</h3>
+            <div style="display: flex; justify-content: center; align-items: center; height: 150px; background: #eee;">
+                <div style="background: #4a90e2; color: white; padding: 20px;">Centered Both Axes</div>
+            </div>
+        </div>
+
+        <!-- Navigation example -->
+        <div class="demo-box">
+            <h3>Navigation Bar Example</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #333; color: white; padding: 10px 20px;">
+                <div style="font-size: 20px; font-weight: bold;">Logo</div>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="color: white; text-decoration: none;">Home</a>
+                    <a href="#" style="color: white; text-decoration: none;">About</a>
+                    <a href="#" style="color: white; text-decoration: none;">Services</a>
+                    <a href="#" style="color: white; text-decoration: none;">Contact</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GRID ==================== -->
+    <section class="section">
+        <h2>CSS Grid</h2>
+
+        <!-- Basic grid -->
+        <div class="demo-box">
+            <h3>Basic Grid (3 columns)</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; padding: 20px; text-align: center;">1</div>
+                <div style="background: #4a90e2; padding: 20px; text-align: center;">2</div>
+                <div style="background: #4a90e2; padding: 20px; text-align: center;">3</div>
+                <div style="background: #4a90e2; padding: 20px; text-align: center;">4</div>
+                <div style="background: #4a90e2; padding: 20px; text-align: center;">5</div>
+                <div style="background: #4a90e2; padding: 20px; text-align: center;">6</div>
+            </div>
+        </div>
+
+        <!-- Grid with different column sizes -->
+        <div class="demo-box">
+            <h3>Grid with Different Column Sizes</h3>
+            <div style="display: grid; grid-template-columns: 200px 1fr 2fr; gap: 10px; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; padding: 20px;">200px</div>
+                <div style="background: #4a90e2; padding: 20px;">1fr</div>
+                <div style="background: #4a90e2; padding: 20px;">2fr</div>
+            </div>
+        </div>
+
+        <!-- Grid with spanning -->
+        <div class="demo-box">
+            <h3>Spanning Items</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #eee; padding: 10px;">
+                <div style="background: #4a90e2; padding: 20px; grid-column: span 2;">Span 2 columns</div>
+                <div style="background: #4a90e2; padding: 20px;">1</div>
+                <div style="background: #4a90e2; padding: 20px;">2</div>
+                <div style="background: #4a90e2; padding: 20px; grid-column: span 2;">Span 2 columns</div>
+            </div>
+        </div>
+
+        <!-- Grid areas example -->
+        <div class="demo-box">
+            <h3>Grid Areas (Page Layout)</h3>
+            <div style="display: grid; grid-template-areas: 
+                'header header header'
+                'sidebar content content'
+                'footer footer footer';
+                gap: 10px;
+                background: #eee;
+                padding: 10px;">
+                <div style="grid-area: header; background: #4a90e2; padding: 20px; text-align: center;">Header</div>
+                <div style="grid-area: sidebar; background: #e74c3c; padding: 20px;">Sidebar</div>
+                <div style="grid-area: content; background: #2ecc71; padding: 20px;">Content</div>
+                <div style="grid-area: footer; background: #f39c12; padding: 20px; text-align: center;">Footer</div>
+            </div>
+        </div>
+
+        <!-- Responsive card grid -->
+        <div class="demo-box">
+            <h3>Responsive Card Grid (auto-fit with minmax)</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+                    <h4>Card 1</h4>
+                    <p>Content here</p>
+                </div>
+                <div style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+                    <h4>Card 2</h4>
+                    <p>Content here</p>
+                </div>
+                <div style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+                    <h4>Card 3</h4>
+                    <p>Content here</p>
+                </div>
+                <div style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+                    <h4>Card 4</h4>
+                    <p>Content here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COMMON PATTERNS ==================== -->
+    <section class="section">
+        <h2>Common CSS Patterns</h2>
+
+        <!-- Card Component -->
+        <div class="demo-box">
+            <h3>Card Component</h3>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div class="card" style="max-width: 300px;">
+                    <img src="https://via.placeholder.com/300x200" alt="Placeholder" class="card-image">
+                    <h3 class="card-title">Card Title</h3>
+                    <p class="card-text">This is a card component with hover effects. Try hovering over it!</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+
+                <div class="card" style="max-width: 300px;">
+                    <img src="https://via.placeholder.com/300x200" alt="Placeholder" class="card-image">
+                    <h3 class="card-title">Another Card</h3>
+                    <p class="card-text">Cards are great for displaying content in a structured way.</p>
+                    <button class="btn btn-outline">Read More</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="demo-box">
+            <h3>Button Styles</h3>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+                <button class="btn btn-primary" disabled>Disabled Button</button>
+            </div>
+        </div>
+
+        <!-- Form Elements -->
+        <div class="demo-box">
+            <h3>Form Styles</h3>
+            <form>
+                <div class="form-group">
+                    <label class="form-label" for="name">Name:</label>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email:</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="error-field">Error Field:</label>
+                    <input type="text" id="error-field" class="form-input error" value="Invalid input">
+                    <div class="error-message">This field has an error</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="demo-box">
+            <h3>Breadcrumb Navigation</h3>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Smartphones</a></li>
+            </ul>
+        </div>
+
+        <!-- Pagination -->
+        <div class="demo-box">
+            <h3>Pagination</h3>
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+
+        <!-- Tooltip -->
+        <div class="demo-box">
+            <h3>Tooltip (hover me)</h3>
+            <span class="tooltip" data-tooltip="This is a tooltip!">Hover over this text</span>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="demo-box">
+            <h3>Loading Spinner</h3>
+            <div class="spinner"></div>
+        </div>
+    </section>
+
+    <!-- ==================== ANIMATIONS ==================== -->
+    <section class="section">
+        <h2>Animations</h2>
+
+        <div class="demo-box">
+            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div class="fade-in" style="width: 100px; height: 100px; background: #4a90e2;"></div>
+                    <p>fadeIn</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="bounce" style="width: 100px; height: 100px; background: #e74c3c;"></div>
+                    <p>bounce</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="pulse" style="width: 100px; height: 100px; background: #2ecc71;"></div>
+                    <p>pulse</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="hover-grow" style="width: 100px; height: 100px; background: #f39c12;"></div>
+                    <p>hover-grow</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== RESPONSIVE EXAMPLE ==================== -->
+    <section class="section">
+        <h2>Responsive Design Example</h2>
+        
+        <div class="demo-box">
+            <p>Resize your browser to see changes:</p>
+            
+            <div style="background: #4a90e2; color: white; padding: 20px; text-align: center;" 
+                 onresize="console.log('resizing')">
+                <span class="hide-on-mobile">Desktop: Visible on desktop, hidden on mobile</span>
+                <span class="full-width-mobile">This takes full width on mobile</span>
+            </div>
+            
+            <!-- Responsive images -->
+            <img src="https://via.placeholder.com/800x400" alt="Responsive image" 
+                 style="max-width: 100%; height: auto; margin-top: 20px;">
+            
+            <!-- Video container -->
+            <div class="video-container" style="margin-top: 20px;">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" 
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed back to top button (demonstrates fixed positioning) -->
+    <a href="#" class="btn btn-primary" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        ↑ Back to Top
+    </a>
 </body>
 </html>

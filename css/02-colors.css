@@ -1,0 +1,142 @@
+/* ========================================
+   MODULE 2: COLOR SYSTEMS
+   ======================================== */
+
+/* ==================== COLOR SYSTEMS ==================== */
+
+/* Named colors (limited - only 140 predefined) */
+.named-color {
+    color: red;
+    color: blue;
+    color: lightblue;
+    color: transparent;  /* Fully transparent */
+}
+
+/* HEX colors - Most common format */
+.hex-colors {
+    color: #ff0000;  /* Red - ff = max, 00 = none */
+    color: #00ff00;  /* Green */
+    color: #0000ff;  /* Blue */
+    color: #333;     /* Shorthand: #333333 - dark gray */
+    color: #fff;     /* Shorthand: #ffffff - white */
+    /* WHY: 6 digits = 16.7 million colors, 3 digits = shorthand when pairs match */
+}
+
+/* RGB - Red Green Blue (0-255) */
+.rgb-colors {
+    color: rgb(255, 0, 0);     /* Pure red */
+    color: rgb(0, 255, 0);     /* Pure green */
+    color: rgb(0, 0, 255);     /* Pure blue */
+    color: rgb(100, 150, 200); /* Custom blue-gray */
+}
+
+/* RGBA - RGB with Alpha (opacity 0-1) */
+.rgba-colors {
+    color: rgba(255, 0, 0, 0.5);  /* Semi-transparent red */
+    background-color: rgba(0, 0, 0, 0.1);  /* Very light black overlay */
+    /* WHY: Alpha allows overlays, shadows, and layered effects */
+}
+
+/* HSL - Hue Saturation Lightness (more intuitive than RGB) */
+.hsl-colors {
+    /* Hue: 0-360 (color wheel), Sat: 0-100%, Light: 0-100% */
+    color: hsl(0, 100%, 50%);     /* Pure red */
+    color: hsl(120, 100%, 50%);   /* Pure green */
+    color: hsl(240, 100%, 50%);   /* Pure blue */
+    color: hsl(200, 80%, 60%);    /* Sky blue */
+    /* WHY: Easy to create variations - just change lightness/saturation */
+}
+
+/* HSLA - HSL with Alpha */
+.hsla-colors {
+    color: hsla(200, 80%, 60%, 0.7);  /* Semi-transparent sky blue */
+}
+
+/* CurrentColor - inherits current text color */
+.current-color-example {
+    color: #4a90e2;
+    border: 2px solid currentColor;  /* Border same as text color - auto updates */
+    /* WHY: Maintains color consistency without duplication */
+}
+
+/* ==================== CSS VARIABLES (Custom Properties) ==================== */
+/* MODERN APPROACH - THEME SYSTEM */
+
+:root {
+    /* Color palette - change one value, updates everywhere */
+    --primary-color: #4a90e2;
+    --primary-dark: #3a7bc8;
+    --secondary-color: #f5f5f5;
+    --text-color: #333;
+    --text-light: #777;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    
+    /* Spacing scale - consistent spacing throughout site */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Typography */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;    /* 18px */
+    --font-size-xl: 1.25rem;     /* 20px */
+    --font-size-2xl: 1.5rem;     /* 24px */
+    
+    /* Borders and shadows */
+    --border-radius: 8px;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Using CSS variables */
+.element {
+    color: var(--primary-color);
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    /* WHY: Variables make themes easy, updates propagate automatically */
+}
+
+/* Practical variable usage in components */
+.card-with-vars {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    color: var(--text-color);
+}
+
+.card-with-vars h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Theme demonstration */
+.light-theme {
+    --bg-color: white;
+    --text-primary: #333;
+    --text-secondary: #666;
+}
+
+.dark-theme {
+    --bg-color: #222;
+    --text-primary: #eee;
+    --text-secondary: #ccc;
+}
+
+.themeable-element {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}

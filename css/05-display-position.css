@@ -1,0 +1,286 @@
+/* ========================================
+   MODULE 5: DISPLAY & POSITIONING
+   ======================================== */
+
+/* ==================== DISPLAY PROPERTY ==================== */
+
+/* 
+   display controls how elements behave in the layout flow
+   Think of it as: "How does this element take up space?"
+*/
+
+/* BLOCK - takes full width, starts new line */
+.block-example {
+    display: block;
+    /* Default for: div, p, h1-h6, section, header, footer */
+    /* Can set width/height, respects margin/padding all around */
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    background: #4a90e2;
+    color: white;
+}
+
+/* INLINE - flows like text, only as wide as content */
+.inline-example {
+    display: inline;
+    /* Default for: span, a, strong, em */
+    /* width/height IGNORED */
+    /* margin/padding only horizontal (left/right) */
+    /* No line breaks - sits next to other inline elements */
+    width: 200px;  /* IGNORED */
+    height: 100px; /* IGNORED */
+    margin: 20px;   /* Only horizontal works */
+    padding: 10px;  /* Works but can overlap */
+    background: #e74c3c;
+    color: white;
+}
+
+/* INLINE-BLOCK - best of both worlds */
+.inline-block-example {
+    display: inline-block;
+    /* Flows inline (no line break) */
+    /* BUT can have width/height like block */
+    /* BUT respects vertical margin/padding */
+    /* Perfect for buttons, nav items, cards in a row */
+    width: 150px;
+    height: 80px;
+    margin: 10px;
+    padding: 10px;
+    background: #2ecc71;
+    color: white;
+}
+
+/* NONE - completely removed from layout */
+.hidden-element {
+    display: none;
+    /* Element not visible, takes NO space */
+    /* Unlike visibility: hidden (which still takes space) */
+}
+
+/* FLEX - modern 1D layout */
+.flex-container {
+    display: flex;
+    /* Turns element into flex container */
+    /* Children become flex items with powerful alignment options */
+}
+
+/* GRID - modern 2D layout */
+.grid-container {
+    display: grid;
+    /* Turns element into grid container */
+    /* Children can be placed in rows AND columns */
+}
+
+/* Other display values */
+.display-other {
+    display: list-item;   /* Behaves like <li> */
+    display: table;       /* Behaves like <table> */
+    display: table-cell;  /* Behaves like <td> */
+    display: contents;    /* Container disappears, children become direct children of parent */
+    display: flow-root;   /* Creates block formatting context (clears floats) */
+}
+
+/* ==================== VISIBILITY ==================== */
+.visibility-examples {
+    visibility: visible;   /* Default - element shows */
+    visibility: hidden;    /* Hidden BUT still takes up space */
+    visibility: collapse;  /* For table elements */
+}
+
+/* ==================== OPACITY ==================== */
+.opacity-examples {
+    opacity: 1;      /* Fully opaque (default) */
+    opacity: 0.5;    /* 50% transparent */
+    opacity: 0;      /* Fully transparent (but still present) */
+    /* Unlike display: none, opacity:0 still takes space and can be clicked */
+}
+
+/* ==================== POSITIONING ==================== */
+
+/* 
+   position controls WHERE elements are placed
+   Think of it as: "How do I take this element out of the normal flow?"
+*/
+
+.position-static {
+    position: static;  /* DEFAULT */
+    /* Element follows normal page flow */
+    /* top/left/right/bottom/z-index have NO EFFECT */
+}
+
+.position-relative {
+    position: relative;
+    /* Element positioned relative to its NORMAL position */
+    top: 10px;        /* Move DOWN 10px from where it would be */
+    left: 20px;       /* Move RIGHT 20px from where it would be */
+    /* Original space is still reserved (other elements don't fill gap) */
+    /* Also creates positioning context for absolute children */
+}
+
+.position-absolute {
+    position: absolute;
+    /* Element removed from normal flow (others ignore it) */
+    /* Positioned relative to nearest positioned ancestor (position not static) */
+    /* If no positioned ancestor, relative to document body */
+    top: 0;
+    right: 0;
+    /* Common for: modals, tooltips, badges, dropdowns */
+}
+
+/* Parent needs this for absolute children to position correctly */
+.absolute-parent {
+    position: relative;  /* Creates positioning context */
+    /* No need for top/left values unless you want to move parent itself */
+}
+
+.absolute-child {
+    position: absolute;
+    top: 0;      /* Sticks to top of parent */
+    left: 0;     /* Sticks to left of parent */
+    /* This creates a corner-stuck element */
+}
+
+.position-fixed {
+    position: fixed;
+    /* Positioned relative to viewport (browser window) */
+    /* Stays in place when scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Common for: headers, back-to-top buttons, cookie notices */
+}
+
+.position-sticky {
+    position: sticky;
+    /* Hybrid: normal (relative) until scroll threshold, then fixed */
+    top: 0;  /* Becomes fixed when it hits top of viewport */
+    /* Common for: section headers in long lists, table headers */
+    /* Parent overflow: hidden/auto/scroll can break sticky */
+}
+
+/* Z-INDEX - stacking order (which element is on top) */
+.z-index-example {
+    position: relative;  /* z-index only works on positioned elements */
+    z-index: 10;         /* Higher number = closer to user (on top) */
+    /* Default z-index: auto (0) */
+    /* Can be negative (behind parent background) */
+}
+
+/* Stacking context - children limited to parent's z-index group */
+.parent-high {
+    position: relative;
+    z-index: 10;
+}
+
+.parent-low {
+    position: relative;
+    z-index: 1;
+}
+
+.child {
+    position: absolute;
+    z-index: 100;  /* Still limited by parent's context */
+    /* Child of parent-high (z-index:10) will be above 
+       child of parent-low (z-index:1), regardless of child's z-index */
+}
+
+/* Practical positioning examples */
+
+/* Centered overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Badge */
+.badge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+/* Tooltip positioning */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-content {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: none;
+}
+
+.tooltip-container:hover .tooltip-content {
+    display: block;
+}
+
+/* Dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: none;
+    min-width: 200px;
+    z-index: 10;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4a90e2;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.back-to-top:hover {
+    background: #3a7bc8;
+}

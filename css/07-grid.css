@@ -1,0 +1,373 @@
+/* ========================================
+   MODULE 7: CSS GRID - COMPLETE GUIDE
+   ======================================== */
+
+/* 
+   Grid is for 2D layouts (rows AND columns simultaneously)
+   Perfect for: complex page layouts, image galleries, dashboards
+*/
+
+/* GRID CONTAINER (PARENT) */
+.grid-container {
+    display: grid;           /* Enable grid */
+    
+    /* ----- DEFINING COLUMNS ----- */
+    /* Fixed widths */
+    grid-template-columns: 100px 200px 100px;    /* 3 columns: 100px, 200px, 100px */
+    grid-template-columns: 1fr 2fr 1fr;           /* 3 flexible columns (fractions) */
+    /* fr = fraction of available space */
+    
+    /* Repeat function */
+    grid-template-columns: repeat(3, 1fr);        /* 3 equal columns */
+    grid-template-columns: repeat(4, 100px);      /* 4 columns of 100px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* auto-fit = create as many columns as fit */
+    /* minmax = minimum 250px, maximum 1fr (responsive cards) */
+    
+    /* Mix of units */
+    grid-template-columns: 200px 1fr 2fr;          /* Fixed sidebar, flexible main */
+    
+    /* Named columns */
+    grid-template-columns: [sidebar] 200px [main] 1fr [right] 200px [end];
+    /* Can reference by name: grid-column: sidebar / main; */
+    
+    /* ----- DEFINING ROWS ----- */
+    grid-template-rows: 100px auto 80px;           /* Fixed header, flexible main, fixed footer */
+    grid-template-rows: repeat(3, 200px);          /* 3 rows of 200px */
+    grid-template-rows: 200px 1fr 100px;           /* Mix of fixed and flexible */
+    
+    /* Implicit rows (extra content) */
+    grid-auto-rows: 150px;                          /* Any extra rows = 150px */
+    grid-auto-rows: minmax(100px, auto);            /* Minimum 100px, grow if needed */
+    
+    /* ----- GAP ----- */
+    gap: 20px;                     /* Space between rows and columns */
+    row-gap: 16px;                 /* Space between rows only */
+    column-gap: 24px;              /* Space between columns only */
+    
+    /* ----- ALIGNMENT (within cells) ----- */
+    justify-items: stretch;        /* Default: fill cell horizontally */
+    justify-items: start;          /* align left within cell */
+    justify-items: end;            /* align right within cell */
+    justify-items: center;         /* center horizontally within cell */
+    
+    align-items: stretch;          /* Default: fill cell vertically */
+    align-items: start;            /* align top within cell */
+    align-items: end;              /* align bottom within cell */
+    align-items: center;           /* center vertically within cell */
+    
+    /* ----- GRID AREAS (named regions) ----- */
+    grid-template-areas: 
+        "header header header"
+        "sidebar main main"
+        "sidebar main main"
+        "footer footer footer";
+    /* Each "quoted string" = one row */
+    /* Each word = cell, same word spans across cells */
+}
+
+/* GRID ITEMS (CHILDREN) */
+.grid-item {
+    /* ----- PLACEMENT BY LINE NUMBERS ----- */
+    grid-column-start: 1;
+    grid-column-end: 3;           /* Span from column line 1 to 3 */
+    grid-row-start: 1;
+    grid-row-end: 3;              /* Span from row line 1 to 3 */
+    
+    /* Shorthand: start / end */
+    grid-column: 1 / 3;           /* From column line 1 to 3 */
+    grid-row: 1 / 3;              /* From row line 1 to 3 */
+    
+    /* Span keyword */
+    grid-column: 1 / span 2;      /* Start at 1, span 2 columns */
+    grid-row: 1 / span 2;         /* Start at 1, span 2 rows */
+    
+    /* Shorthand for both: row-start / col-start / row-end / col-end */
+    grid-area: 1 / 1 / 3 / 3;     /* row-start / col-start / row-end / col-end */
+    
+    /* ----- PLACEMENT BY NAMED LINES ----- */
+    grid-column: sidebar / main;   /* Use named lines from template */
+    grid-row: header / footer;
+    
+    /* ----- PLACEMENT BY AREAS ----- */
+    grid-area: header;             /* Place in header area */
+    
+    /* ----- SPANNING MULTIPLE ----- */
+    grid-column: 1 / -1;           /* Span from first to last line */
+    /* Negative lines count from end */
+    
+    /* ----- INDIVIDUAL ALIGNMENT ----- */
+    justify-self: stretch;         /* Override container's justify-items */
+    justify-self: start;
+    justify-self: end;
+    justify-self: center;
+    
+    align-self: stretch;           /* Override container's align-items */
+    align-self: start;
+    align-self: end;
+    align-self: center;
+}
+
+/* ==================== GRID PRACTICAL EXAMPLES ==================== */
+
+/* 1. Basic page layout */
+.page-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: 100px 1fr 80px;
+    grid-template-areas: 
+        "header header header"
+        "sidebar content ads"
+        "footer footer footer";
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.header { 
+    grid-area: header; 
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar { 
+    grid-area: sidebar; 
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.content { 
+    grid-area: content; 
+    padding: 20px;
+}
+
+.ads { 
+    grid-area: ads; 
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.footer { 
+    grid-area: footer; 
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 2. Responsive card grid (no media queries needed) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 24px;
+    /* Creates responsive grid that adds columns as space allows */
+    /* Each card minimum 300px, grows to fill space */
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 3. Masonry-like layout (different heights) */
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    gap: 20px;
+}
+
+.wide {
+    grid-column: span 2;  /* Takes 2 columns */
+}
+
+.tall {
+    grid-row: span 2;     /* Takes 2 rows */
+}
+
+/* 4. Dashboard layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 250px 1fr 1fr;
+    grid-template-rows: 80px 1fr 1fr 60px;
+    gap: 16px;
+    height: 100vh;
+    padding: 16px;
+    background: #f5f5f5;
+}
+
+.dashboard-header {
+    grid-column: 1 / -1;  /* Full width */
+    grid-row: 1 / 2;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.dashboard-sidebar {
+    grid-row: 2 / -2;     /* From row 2 to second-last */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.dashboard-main {
+    grid-column: 2 / -1;
+    grid-row: 2 / -2;
+    display: grid;        /* Nested grid */
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.dashboard-footer {
+    grid-column: 1 / -1;
+    grid-row: -2 / -1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* 5. Holy Grail with grid (simpler than flexbox) */
+.holy-grail-grid {
+    display: grid;
+    grid-template: 
+        "header header header" 100px
+        "nav    main   ads"    1fr
+        "footer footer footer" 80px /
+        200px   1fr    150px;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+/* 6. Image gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 16px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Featured item spans more space */
+.gallery-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* 7. Calendar layout */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    background: #f5f5f5;
+    padding: 16px;
+}
+
+.calendar-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+}
+
+.calendar-day {
+    background: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 4px;
+    min-height: 80px;
+}
+
+.calendar-day.today {
+    background: #4a90e2;
+    color: white;
+}
+
+/* 8. Product grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    display: grid;
+    grid-template-rows: 200px auto auto auto;
+    gap: 12px;
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.product-price {
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.product-button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 9. Form layout with grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+/* 10. Nested grids */
+.outer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.inner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}

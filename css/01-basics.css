@@ -1,0 +1,105 @@
+/* ========================================
+   MODULE 1: CSS BASICS & RESET
+   ======================================== */
+
+/* ==================== CSS BASICS - HOW CSS WORKS ==================== */
+
+/* CSS = Cascading Style Sheets
+   "Cascading" means styles cascade down - later styles override earlier ones
+   "Specificity" determines which rule wins when multiple target same element
+   
+   Priority order (highest to lowest):
+   1. !important (AVOID - breaks natural cascade)
+   2. Inline styles (style="..." in HTML)
+   3. ID selectors (#id)
+   4. Class selectors (.class), attributes ([type="text"])
+   5. Element selectors (div, p, h1)
+   6. Universal selector (*)
+*/
+
+/* ==================== RESET & BASE STYLES ==================== */
+
+/* Universal selector - applies to EVERY element */
+/* WHY: Remove default browser margins/padding that vary across browsers */
+/* HOW: Ensures consistent starting point across all browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Better box-sizing practice - apply to everything */
+/* WHY: Makes width/height calculations intuitive and consistent */
+/* HOW: border-box includes padding/border in width, content-box doesn't */
+html {
+    box-sizing: border-box;
+}
+
+/* Inherit box-sizing for all elements (better maintainability) */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Root element styles */
+html {
+    font-size: 16px;  /* Base font size for rem units (1rem = 16px) */
+    scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+}
+
+/* Body defaults */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    /* WHY: System fonts = faster loading, native look on each OS */
+    
+    line-height: 1.6;  /* 1.6 = 160% of font size - optimal readability */
+    color: #333;  /* Dark gray instead of pure black (easier on eyes) */
+    background-color: #fff;
+    
+    /* Anti-aliasing for smoother fonts */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== SECTION STYLES (for HTML demos) ==================== */
+
+/* These styles are for the HTML demonstration page */
+.section {
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+.section h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 10px;
+}
+
+.demo-box {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ID selector example (higher specificity than class) */
+#special-paragraph {
+    color: purple;
+    font-weight: bold;
+    border-left: 4px solid purple;
+    padding-left: 10px;
+}
+
+/* Class selector example */
+.highlight {
+    background-color: yellow;
+    padding: 2px 5px;
+}
+
+/* Element selector example */
+p {
+    margin-bottom: 10px;
+}
